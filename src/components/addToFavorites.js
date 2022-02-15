@@ -18,12 +18,12 @@ const AddToFavorites = () => {
     };
     //this saves our launch id in local storage so we can access it later
     if (!favorite) {
-       sessionStorage.setItem("favorite" + launchId, storageItems);
+      localStorage.setItem("favorite" + launchId, storageItems);
     } else {
-     sessionStorage.removeItem("favorite" + launchId);
+      localStorage.removeItem("favorite" + launchId);
     }
   };
-  
+
   return (
     <div>
       {favorite ? (

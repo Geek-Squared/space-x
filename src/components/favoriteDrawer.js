@@ -25,15 +25,15 @@ const FavoriteDrawer = () => {
   const { data: launch, error } = useSpaceX(`/launches/${launchId}`);
 
   if (error) return <h1>Error...</h1>;
-  
+
   // This function gets all items from the local storage
   function getAll() {
     let values = [],
-      keys = Object.keys(sessionStorage),
+      keys = Object.keys(localStorage),
       i = keys.length;
 
     while (i--) {
-      values.push(sessionStorage.getItem(keys[i]));
+      values.push(localStorage.getItem(keys[i]));
     }
 
     return values;
