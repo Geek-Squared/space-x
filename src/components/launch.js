@@ -25,6 +25,7 @@ import { useSpaceX } from "../utils/use-space-x";
 import { formatDateTime } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
+import AddToFavorites from "./addToFavorites";
 
 export default function Launch() {
   let { launchId } = useParams();
@@ -120,13 +121,14 @@ function TimeAndLocation({ launch }) {
         <StatLabel display="flex">
           <Box as={Watch} width="1em" />{" "}
           <Box ml="2" as="span">
-            Launch Date
+           Launch Date
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>
           {formatDateTime(launch.launch_date_local)}
         </StatNumber>
         <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
+        <AddToFavorites />
       </Stat>
       <Stat>
         <StatLabel display="flex">
