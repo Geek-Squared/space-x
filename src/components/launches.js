@@ -8,6 +8,7 @@ import { formatDate } from "../utils/format-date";
 import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
+import AddToFavorites from "./addToFavorites";
 
 const PAGE_SIZE = 12;
 
@@ -116,6 +117,9 @@ export function LaunchItem({ launch }) {
             {timeAgo(launch.launch_date_utc)}
           </Text>
         </Flex>
+        <Box>
+          <AddToFavorites />
+        </Box>
       </Box>
     </Box>
   );
