@@ -46,7 +46,7 @@ const FavoriteDrawer = () => {
   return (
     <>
       <Button ref={btnRef} color="gray.800" onClick={onOpen} size="md">
-        Favorites <Heart fill="red" />
+        My Favorites <Heart fill="red" />
       </Button>
       <Drawer
         isOpen={isOpen}
