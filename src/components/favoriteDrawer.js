@@ -14,18 +14,22 @@ import {
   useDisclosure,
   Box,
   Heading,
+  Link,
   Flex,
 } from "@chakra-ui/core";
 import { Heart } from "react-feather";
 import { Trans } from "@lingui/macro";
 import { XCircle } from "react-feather";
+import Error from "./error";
 
 const FavoriteDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   let { launchId } = useParams();
-  const { data: launch } = useSpaceX(`/launches/${launchId}`);
+  const { data: launch, error } = useSpaceX(`/launches/${launchId}`);
 
+  if (error) return <Error />;
+  console.log(`launch`, launch)
   const removeFavorite = () => {
     localStorage.removeItem("favorite" + launchId);
     onClose();
@@ -45,7 +49,7 @@ const FavoriteDrawer = () => {
   }
   // This variable stores the parsed value, ie, turning a stringified object back to an object value
   const getMissions = Object.assign(
-    {},
+    {}
     //This is causing a cors error, so I'm commenting it out for now but it fetches the data from the local storage
     // ...getAll().map((item) => JSON.parse(item))
   );
@@ -93,14 +97,18 @@ const FavoriteDrawer = () => {
               </Box>
               <Flex direction="column" p="6">
                 <Heading>{missionName}</Heading>
-                <Button
-                  mt={2}
-                  color="#FFFFFF"
-                  backgroundColor="gray.800"
-                  onClick={`/launches/${launchId}`}
+                <Link
+                  as={RouterLink}
+                  to={`/launches/${launchId}`}
                 >
-                  Go To {missionName}
-                </Button>
+                  <Button
+                    mt={2}
+                    color="#FFFFFF"
+                    backgroundColor="gray.800"
+                  >
+                    Go To {missionName}
+                  </Button>
+                </Link>
               </Flex>
             </Box>
           </DrawerBody>
