@@ -1,0 +1,1 @@
+/*eslint-disable*/module.exports={messages:{"\"Home\"":"Accueil","\"Launches\"":"Lancements","Browse SpaceX Launch Pads":"Parcourir les rampes de lancement SpaceX","Browse SpaceX Launches":"Parcourir les lancements de SpaceX","Failed":"Manqué","My Favorites":"Mes favoris","Successful":"À succès"}};
