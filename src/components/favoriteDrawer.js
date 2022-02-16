@@ -20,15 +20,13 @@ import {
 import { Heart } from "react-feather";
 import { Trans } from "@lingui/macro";
 import { XCircle } from "react-feather";
-import Error from "./error";
 
 const FavoriteDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   let { launchId } = useParams();
-  const { data: launch, error } = useSpaceX(`/launches/${launchId}`);
+  const { data: launch } = useSpaceX(`/launches/${launchId}`);
 
-  if (error) return <Error />;
   console.log(`launch`, launch)
   const removeFavorite = () => {
     localStorage.removeItem("favorite" + launchId);
