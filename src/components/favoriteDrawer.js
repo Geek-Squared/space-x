@@ -20,7 +20,6 @@ import {
 import { Heart } from "react-feather";
 import { Trans } from "@lingui/macro";
 import { XCircle } from "react-feather";
-import Error from "./error";
 
 const FavoriteDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
