@@ -1,10 +1,9 @@
-![Drawing of a rocket launching with Pleo logo on the side](https://repository-images.githubusercontent.com/255552950/c9991080-ff11-11ea-8706-5d40322f68fe)
+<img width="366" alt="Screenshot 2022-02-16 at 06 25 28" src="https://user-images.githubusercontent.com/63599863/154196133-0fe17f83-ca49-4df8-86d4-e9e59c92dc5c.png">
+<img width="473" alt="Screenshot 2022-02-16 at 06 25 35" src="https://user-images.githubusercontent.com/63599863/154196143-86468193-1c4c-411a-ab0b-cbe461d011f6.png">
+
 
 # ¡Space·Rockets! app
 
-### [👉 Go to the challenge 👈](./CHALLENGE.md)
-
-### [🚀 See the app in action 🚀](https://spacerockets.netlify.app)
 
 ## Develop
 
