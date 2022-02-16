@@ -2,12 +2,13 @@ import React from "react";
 import { Flex, Box, Text, Stack, Link } from "@chakra-ui/core";
 import { ArrowRight } from "react-feather";
 import { Link as BrowserLink } from "react-router-dom";
+import { Trans } from "@lingui/macro";
 
 export default function Home() {
   return (
     <Stack m="6" spacing="6">
-      <PageLink url="/launches">Browse SpaceX Launches</PageLink>
-      <PageLink url="/launch-pads">Browse SpaceX Launch Pads</PageLink>
+      <PageLink url="/launches"><Trans>Browse SpaceX Launches</Trans></PageLink>
+      <PageLink url="/launch-pads"><Trans>Browse SpaceX Launch Pads</Trans></PageLink>
     </Stack>
   );
 }

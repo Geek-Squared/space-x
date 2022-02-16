@@ -121,14 +121,14 @@ function TimeAndLocation({ launch }) {
         <StatLabel display="flex">
           <Box as={Watch} width="1em" />{" "}
           <Box ml="2" as="span">
-           Launch Date
+          Launch Date
           </Box>
         </StatLabel>
         <StatNumber fontSize={["md", "xl"]}>
           {formatDateTime(launch.launch_date_local)}
         </StatNumber>
         <StatHelpText>{timeAgo(launch.launch_date_utc)}</StatHelpText>
-        <AddToFavorites />
+        <Box><AddToFavorites /></Box>
       </Stat>
       <Stat>
         <StatLabel display="flex">

@@ -9,6 +9,7 @@ import Error from "./error";
 import Breadcrumbs from "./breadcrumbs";
 import LoadMoreButton from "./load-more-button";
 import AddToFavorites from "./addToFavorites";
+import { Trans } from "@lingui/macro";
 
 const PAGE_SIZE = 12;
 
@@ -21,11 +22,14 @@ export default function Launches() {
       sort: "launch_date_utc",
     }
   );
-  console.log(data, error);
+
   return (
     <div>
       <Breadcrumbs
-        items={[{ label: "Home", to: "/" }, { label: "Launches" }]}
+        items={[
+          { label: <Trans>"Home"</Trans>, to: "/" },
+          { label: <Trans>"Launches"</Trans> },
+        ]}
       />
       <SimpleGrid m={[2, null, 6]} minChildWidth="350px" spacing="4">
         {error && <Error />}
@@ -57,6 +61,7 @@ export function LaunchItem({ launch }) {
       overflow="hidden"
       position="relative"
     >
+      
       <Image
         src={
           launch.links.flickr_images[0]?.replace("_o.jpg", "_z.jpg") ??
@@ -78,16 +83,16 @@ export function LaunchItem({ launch }) {
         objectFit="contain"
         objectPosition="bottom"
       />
-
+      
       <Box p="6">
         <Box d="flex" alignItems="baseline">
           {launch.launch_success ? (
             <Badge px="2" variant="solid" variantColor="green">
-              Successful
+              <Trans>Successful</Trans>
             </Badge>
           ) : (
             <Badge px="2" variant="solid" variantColor="red">
-              Failed
+              <Trans>Failed</Trans>
             </Badge>
           )}
           <Box
@@ -117,10 +122,10 @@ export function LaunchItem({ launch }) {
             {timeAgo(launch.launch_date_utc)}
           </Text>
         </Flex>
-        <Box>
-          <AddToFavorites />
-        </Box>
+        <Box></Box>
       </Box>
+      <AddToFavorites />
     </Box>
+    
   );
 }
