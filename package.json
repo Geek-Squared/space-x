@@ -12,6 +12,7 @@
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
     "@lingui/react": "^3.13.2",
+    "destr": "^1.1.0",
     "emotion-theming": "^10.0.27",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -26,6 +27,7 @@
     "start": "react-scripts start",
     "build": "CI= react-scripts build",
     "test": "react-scripts test",
+    "add-locale": "lingui add-locale",
     "extract": "lingui extract",
     "compile": "lingui compile"
   },
@@ -45,7 +47,9 @@
     ]
   },
   "devDependencies": {
+    "@babel/core": "^7.17.4",
     "@lingui/cli": "^3.13.2",
-    "@lingui/macro": "^3.13.2"
+    "@lingui/macro": "^3.13.2",
+    "babel-core": "^7.0.0-bridge.0"
   }
 }

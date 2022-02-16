@@ -17,20 +17,25 @@ import {
   Flex,
 } from "@chakra-ui/core";
 import { Heart } from "react-feather";
+import { Trans } from "@lingui/macro";
+import { XCircle } from "react-feather";
 
 const FavoriteDrawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
   let { launchId } = useParams();
-  const { data: launch, error } = useSpaceX(`/launches/${launchId}`);
+  const { data: launch } = useSpaceX(`/launches/${launchId}`);
 
-  if (error) return <h1>Error...</h1>;
+  const removeFavorite = () => {
+    localStorage.removeItem("favorite" + launchId);
+    onClose();
+  };
 
   // This function gets all items from the local storage
   function getAll() {
-    let values = [],
-      keys = Object.keys(localStorage),
-      i = keys.length;
+    let values = [];
+    let keys = Object.keys(localStorage);
+    let i = keys.length;
 
     while (i--) {
       values.push(localStorage.getItem(keys[i]));
@@ -38,15 +43,18 @@ const FavoriteDrawer = () => {
 
     return values;
   }
-
-  const getMissions = getAll();
   // This variable stores the parsed value, ie, turning a stringified object back to an object value
-  const { image, missionName } = JSON.parse(getMissions);
+  const getMissions = Object.assign(
+    {},
+    //This is causing a cors error, so I'm commenting it out for now but it fetches the data from the local storage
+    // ...getAll().map((item) => JSON.parse(item))
+  );
 
+  const { image, missionName } = getMissions;
   return (
     <>
       <Button ref={btnRef} color="gray.800" onClick={onOpen} size="md">
-        My Favorites <Heart fill="red" />
+        <Trans>My Favorites</Trans> <Heart fill="red" />
       </Button>
       <Drawer
         isOpen={isOpen}
@@ -62,8 +70,9 @@ const FavoriteDrawer = () => {
 
           <DrawerBody>
             <Heading as="h5" size="sm">
-              Launches ({getMissions.length})
+              Launches ({getAll().length})
             </Heading>
+
             <Box
               maxW="sm"
               borderWidth="1px"
@@ -73,6 +82,12 @@ const FavoriteDrawer = () => {
             >
               <Box display="flex" alignItems="baseline">
                 <Box p="6">
+                  <XCircle
+                    fill="red"
+                    style={{ marginLeft: "300px" }}
+                    onClick={removeFavorite}
+                    onMouseOver="pointer"
+                  />
                   <Image src={image} alt="Mission Image" size="xs" />
                 </Box>
               </Box>
@@ -82,7 +97,7 @@ const FavoriteDrawer = () => {
                   mt={2}
                   color="#FFFFFF"
                   backgroundColor="gray.800"
-                  onClick={`/launches/${launch.flight_number.toString()}`}
+                  onClick={`/launches/${launchId}`}
                 >
                   Go To {missionName}
                 </Button>
@@ -91,7 +106,7 @@ const FavoriteDrawer = () => {
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
+            <Button variant="outline" mr={3}>
               Close
             </Button>
           </DrawerFooter>
