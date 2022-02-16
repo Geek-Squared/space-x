@@ -17,7 +17,7 @@ i18n.load({
   cs: csMessages,
   da: daMessages
 })
-i18n.activate('fr')
+i18n.activate('en')
 
 ReactDOM.render(
   <React.StrictMode>
